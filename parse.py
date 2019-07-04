@@ -58,6 +58,9 @@ print("the Free Software Foundation, either version 3 of the License, or")
 print("(at your option) any later version.")
 print("\n")
 
+recordLinkPath = raw_input("File name for Record Links (Including Extension): ")
+newFileLocationPath = raw_input("File name for new File Locations (Including Extension): ")
+
 # Create Global Variables
 CurrentRecordLinksCounter = 0
 NewLocationCounter = 0
@@ -70,7 +73,7 @@ ReconciliationSet = set()
 ReconciledLinksCounter = 0
 
 # Write all New Location Files to set 'NewLocationFiles'
-with open('UpdatedNewLocationFiles.csv') as csvDataFile:
+with open(newFileLocationPath) as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         allData = ((row[1]).split('/'))
@@ -101,7 +104,7 @@ print('Total Files Found in New Location: ' + str(NewLocationCounter))
 
 #Write all Current Record Link Files to set 'CurrentRecordLinksFiles'
 # 'line' Definition: [oldPath],[address],[Record ID],[Customer/Vendor]
-with open('UpdatedRecordLinks.csv') as csvDataFile:
+with open(recordLinkPath) as csvDataFile:
     csvReader2 = csv.reader(csvDataFile)
     for row in csvReader2:
         allAddress = str(row[3]) + '\\' + str(row)
